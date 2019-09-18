@@ -290,7 +290,12 @@ var GroupCellRenderer = /** @class */ (function (_super) {
     };
     GroupCellRenderer.prototype.createLeafCell = function () {
         if (utils_1._.exists(this.params.value)) {
-            this.eValue.innerText = this.params.valueFormatted ? this.params.valueFormatted : this.params.value;
+            if (typeof this.params.valueFormatted === 'object') {
+                this.eValue.appendChild(this.params.valueFormatted);
+            }
+            else {
+                this.eValue.innerText = this.params.valueFormatted ? this.params.valueFormatted : this.params.value;
+            }
         }
     };
     GroupCellRenderer.prototype.isUserWantsSelected = function () {
